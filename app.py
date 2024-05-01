@@ -1,38 +1,15 @@
-from datetime import datetime
-import customtkinter as ctk
+import dearpygui.dearpygui as dpg
 
+dpg.create_context()
+dpg.create_viewport(title='Custom Title', width=600, height=300)
 
-def update_time():
-    current_time = datetime.now().strftime("%H:%M:%S")
-    time_label.configure(text=current_time)
-    app.after(1000, update_time)
-def update_date():
-    current_date = datetime.today().strftime("%m-%d-%y")
-    date_label.configure(text=current_date)
-    app.after(1000, update_date)
-#Start CTK GUI
-app = ctk.CTk()
-app.geometry("480x320")
-#Tab View
-tabview = ctk.CTkTabview(app)
-tabview.pack(padx=10,pady=10)
+with dpg.window(label="Welcome Window"):
+    dpg.add_text("Hello, world")
+    dpg.add_button(label="Save")
+    dpg.add_input_text(label="string", default_value="Quick brown fox")
+    dpg.add_slider_float(label="float", default_value=0.273, max_value=1)
 
-
-clock_tab = tabview.add("Home")
-info_tab = tabview.add("Info")
-tabview.set("Home")
-#Widgets
-t1 = ctk.CTkLabel(clock_tab,text="Welcome",font=('Times New Roman',35))
-t1.pack(padx=20,pady=20)
-
-time_label = ctk.CTkLabel(clock_tab,text_color="blue",text="00:00:00", font=('Helvetica',32))
-time_label.pack(padx=10,pady=10)
-
-date_label = ctk.CTkLabel(clock_tab,text_color="red",text="date",font=("Helvetica",30))
-date_label.pack(padx=10,pady=10)
-
-
-
-update_time()
-update_date()
-app.mainloop()
+dpg.setup_dearpygui()
+dpg.show_viewport()
+dpg.start_dearpygui()
+dpg.destroy_context()

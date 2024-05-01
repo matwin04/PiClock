@@ -11,5 +11,7 @@ PiClock is a simple clock GUI for a 3.5 Inch TFT Screen
 
 ## Install On RasPi
 
-`git clone https://github.com/matwin04/PiClock.git`
+1. `git clone https://github.com/matwin04/PiClock.git`
 Use this code in RPi Terminal
+
+2.  `python3 app.py`
